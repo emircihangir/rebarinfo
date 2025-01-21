@@ -1,18 +1,16 @@
-// ignore_for_file: camel_case_types
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photo_view/photo_view.dart';
 
 void main() {
-  runApp(const mainApp());
+  runApp(const MainApp());
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [
     SystemUiOverlay.top
   ]);
 }
 
-class mainApp extends StatelessWidget {
-  const mainApp({super.key});
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -93,9 +91,9 @@ class Tabs extends StatelessWidget {
         ),
         body: const TabBarView(
           children: <Widget>[
-            page1(),
-            page2(),
-            page3(),
+            Page1(),
+            Page2(),
+            Page3(),
           ],
         ),
       ),
@@ -103,14 +101,14 @@ class Tabs extends StatelessWidget {
   }
 }
 
-class page1 extends StatefulWidget {
-  const page1({super.key});
+class Page1 extends StatefulWidget {
+  const Page1({super.key});
 
   @override
-  State<page1> createState() => _page1State();
+  State<Page1> createState() => _Page1State();
 }
 
-class _page1State extends State<page1> {
+class _Page1State extends State<Page1> {
   int? capDeger;
   TextEditingController uzunlukDeger = TextEditingController();
   String sonuc = '';
@@ -213,14 +211,14 @@ class _page1State extends State<page1> {
   }
 }
 
-class page2 extends StatefulWidget {
-  const page2({super.key});
+class Page2 extends StatefulWidget {
+  const Page2({super.key});
 
   @override
-  State<page2> createState() => _page2State();
+  State<Page2> createState() => _Page2State();
 }
 
-class _page2State extends State<page2> {
+class _Page2State extends State<Page2> {
   int? capDeger;
   TextEditingController adetDeger = TextEditingController();
   String sonuc = "";
@@ -384,14 +382,14 @@ class _page2State extends State<page2> {
   }
 }
 
-class page3 extends StatefulWidget {
-  const page3({super.key});
+class Page3 extends StatefulWidget {
+  const Page3({super.key});
 
   @override
-  State<page3> createState() => _page3State();
+  State<Page3> createState() => _Page3State();
 }
 
-class _page3State extends State<page3> {
+class _Page3State extends State<Page3> {
   TextEditingController kesitAlaniDeger = TextEditingController();
 
   Map<int, double> capKesit = {
