@@ -5,8 +5,12 @@ class IOSapp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      child: Text("IOS app"),
+    return const CupertinoApp(
+      home: CupertinoPageScaffold(
+        child: Center(
+          child: Text("IOS app"),
+        ),
+      ),
     );
   }
 }
