@@ -189,36 +189,6 @@ class _Page2State extends State<Page2> {
   TextEditingController adetDeger = TextEditingController();
   String sonuc = "";
 
-  List<TableRow> getTableRows() {
-    if (capDeger == null || adetDeger.text.isEmpty || sonuc.isEmpty) return <TableRow>[];
-
-    List<TableRow> tr = [
-      const TableRow(children: [
-        Center(child: Text("Adet")),
-        Center(child: Text("Çap (mm)")),
-        Center(child: Text("Kesit Alanı (cm²)")),
-      ])
-    ];
-
-    int counter = 0;
-    for (var cap in capKesit.keys) {
-      if (cap == capDeger) continue;
-
-      double adet = double.parse(sonuc) / capKesit[cap]!;
-
-      int newAdet = adet.ceil();
-
-      tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? const Color.fromRGBO(240, 240, 240, 1) : null), children: [
-        Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
-        Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-        Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
-      ]));
-      counter++;
-    }
-
-    return tr;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -304,7 +274,7 @@ class _Page2State extends State<Page2> {
             Container(
               margin: const EdgeInsets.only(top: 50, left: 8, right: 8),
               child: Table(
-                children: getTableRows(),
+                children: page2_get_table_rows(capDeger, adetDeger, sonuc),
               ),
             )
           ],
