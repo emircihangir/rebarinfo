@@ -207,26 +207,7 @@ class _Page2State extends State<Page2> {
                     keyboardType: TextInputType.number,
                     controller: adetDeger,
                     onChanged: (value) {
-                      if (adetDeger.text.contains('.') || adetDeger.text.contains(',')) {
-                        adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
-
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                content: const Text('Adet değeri tam sayı olmalıdır.'),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('Tamam'))
-                                ],
-                              );
-                            });
-                      } else if (adetDeger.text.contains('-') || adetDeger.text.contains(' ')) {
-                        adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
-                      } else if (capDeger != null && adetDeger.text.isNotEmpty) {
+                      if (capDeger != null && adetDeger.text.isNotEmpty) {
                         setState(() => sonuc = page2_calculation(capDeger, adetDeger));
                       }
                     },
