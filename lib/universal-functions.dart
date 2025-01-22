@@ -55,6 +55,8 @@ String page2_calculation(capDeger, adetDeger) {
 }
 
 List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
+  if (kesitAlaniDeger.text.isEmpty) return [];
+
   List<TableRow> tr = [
     const TableRow(children: [
       Center(child: Text("Adet")),
