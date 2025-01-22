@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 Map<int, double> capBirimagirlik = {
   8: 0.395,
   10: 0.617,
@@ -50,4 +52,30 @@ String page2_calculation(capDeger, adetDeger) {
     r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
   }
   return r.toStringAsFixed(3);
+}
+
+List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
+  List<TableRow> tr = [
+    const TableRow(children: [
+      Center(child: Text("Adet")),
+      Center(child: Text("Çap (mm)")),
+      Center(child: Text("Kesit Alanı (cm²)")),
+    ])
+  ];
+
+  int counter = 0;
+  for (var cap in capKesit.keys) {
+    double adet = double.parse(kesitAlaniDeger.text.replaceAll(',', '.')) / capKesit[cap]!;
+
+    int newAdet = adet.ceil();
+
+    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? const Color.fromRGBO(240, 240, 240, 1) : null), children: [
+      Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
+      Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
+      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
+    ]));
+    counter++;
+  }
+
+  return tr;
 }

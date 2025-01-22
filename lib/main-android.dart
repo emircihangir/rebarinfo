@@ -324,53 +324,6 @@ class Page3 extends StatefulWidget {
 class _Page3State extends State<Page3> {
   TextEditingController kesitAlaniDeger = TextEditingController();
 
-  Map<int, double> capKesit = {
-    8: 0.5,
-    10: 0.79,
-    12: 1.13,
-    14: 1.54,
-    16: 2.01,
-    18: 2.54,
-    20: 3.14,
-    22: 3.8,
-    24: 4.52,
-    26: 5.31,
-    28: 6.16,
-    30: 7.07,
-    32: 8.04,
-    36: 10.18,
-    40: 12.57,
-    50: 19.64
-  };
-
-  List<TableRow> getTableRows() {
-    if (kesitAlaniDeger.text.isEmpty) return <TableRow>[];
-
-    List<TableRow> tr = [
-      const TableRow(children: [
-        Center(child: Text("Adet")),
-        Center(child: Text("Çap (mm)")),
-        Center(child: Text("Kesit Alanı (cm²)")),
-      ])
-    ];
-
-    int counter = 0;
-    for (var cap in capKesit.keys) {
-      double adet = double.parse(kesitAlaniDeger.text.replaceAll(',', '.')) / capKesit[cap]!;
-
-      int newAdet = adet.ceil();
-
-      tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? const Color.fromRGBO(240, 240, 240, 1) : null), children: [
-        Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
-        Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-        Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
-      ]));
-      counter++;
-    }
-
-    return tr;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -397,7 +350,7 @@ class _Page3State extends State<Page3> {
             Container(
               margin: const EdgeInsets.only(top: 50, left: 8, right: 8),
               child: Table(
-                children: getTableRows(),
+                children: page3_get_table_rows(kesitAlaniDeger),
               ),
             )
           ],
