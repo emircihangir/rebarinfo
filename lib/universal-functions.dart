@@ -71,7 +71,7 @@ List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
 
     int newAdet = adet.ceil();
 
-    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? const Color.fromRGBO(240, 240, 240, 1) : null), children: [
+    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
       Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
       Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
       Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
@@ -101,7 +101,7 @@ List<TableRow> page2_get_table_rows(capDeger, adetDeger, sonuc) {
 
     int newAdet = adet.ceil();
 
-    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? const Color.fromRGBO(240, 240, 240, 1) : null), children: [
+    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
       Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
       Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
       Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
