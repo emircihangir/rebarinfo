@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:photo_view/photo_view.dart';
+import 'universal-functions.dart';
 
 class AndroidApp extends StatelessWidget {
   const AndroidApp({super.key});
@@ -106,34 +107,6 @@ class _Page1State extends State<Page1> {
   TextEditingController uzunlukDeger = TextEditingController();
   String sonuc = '';
 
-  Map<int, double> capBirimagirlik = {
-    8: 0.395,
-    10: 0.617,
-    12: 0.888,
-    14: 1.21,
-    16: 1.58,
-    18: 2,
-    20: 2.47,
-    22: 2.985,
-    24: 3.55,
-    26: 4.168,
-    28: 4.83,
-    30: 5.55,
-    32: 6.31,
-    36: 7.99,
-    40: 9.86,
-    50: 15.4
-  };
-
-  void calculate(value) {
-    (capDeger != null && uzunlukDeger.text.isNotEmpty)
-        ? setState(() {
-            double r = (capBirimagirlik[capDeger] ?? 0) * double.parse(uzunlukDeger.text.replaceAll(',', '.'));
-            sonuc = r.toStringAsFixed(3);
-          })
-        : null;
-  }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -154,8 +127,8 @@ class _Page1State extends State<Page1> {
                     onChanged: (value) {
                       if (value.contains('-') || value.contains(' ')) {
                         uzunlukDeger.text = uzunlukDeger.text.substring(0, uzunlukDeger.text.length - 1);
-                      } else {
-                        calculate(value);
+                      } else if (capDeger != null && uzunlukDeger.text.isNotEmpty) {
+                        setState(() => sonuc = page1_calculation(capDeger, uzunlukDeger));
                       }
                     },
                   ),
@@ -181,10 +154,10 @@ class _Page1State extends State<Page1> {
                     DropdownMenuItem(value: 50, child: Text('50')),
                   ],
                   onChanged: (value) {
-                    setState(() {
-                      capDeger = value;
-                    });
-                    calculate(value);
+                    capDeger = value;
+                    if (capDeger != null && uzunlukDeger.text.isNotEmpty) {
+                      setState(() => sonuc = page1_calculation(capDeger, uzunlukDeger));
+                    }
                   },
                   hint: const Text('Çap (mm)'),
                   itemHeight: 80.0,
