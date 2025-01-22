@@ -339,10 +339,11 @@ class _Page3State extends State<Page3> {
                 keyboardType: TextInputType.number,
                 controller: kesitAlaniDeger,
                 onChanged: (value) {
-                  if (value.contains('-') || value.contains(' ')) {
-                    kesitAlaniDeger.text = kesitAlaniDeger.text.substring(0, kesitAlaniDeger.text.length - 1);
-                  } else {
+                  try {
+                    double.parse(kesitAlaniDeger.text.replaceAll(',', '.'));
                     setState(() {});
+                  } on FormatException {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Geçersiz değer.")));
                   }
                 },
               ),
