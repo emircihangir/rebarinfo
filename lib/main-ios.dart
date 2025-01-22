@@ -7,10 +7,28 @@ class IOSapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp(
         home: CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(items: const [
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.circle_bottomthird_split), label: "Ağırlık"),
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.arrow_2_circlepath), label: "Çap Dönüştürme"),
-        BottomNavigationBarItem(icon: Icon(CupertinoIcons.recordingtape), label: "Donatı Seçimi"),
+      tabBar: CupertinoTabBar(items: [
+        BottomNavigationBarItem(
+            icon: Image.asset(
+              "./assets/weight.png",
+              color: CupertinoColors.systemGrey,
+            ),
+            activeIcon: Image.asset(
+              "./assets/weight.png",
+              color: CupertinoColors.activeBlue,
+            ),
+            label: "Ağırlık"),
+        const BottomNavigationBarItem(icon: Icon(CupertinoIcons.arrow_2_circlepath), label: "Çap Dönüştürme"),
+        BottomNavigationBarItem(
+            icon: Image.asset(
+              "./assets/steel.png",
+              color: CupertinoColors.systemGrey,
+            ),
+            activeIcon: Image.asset(
+              "./assets/steel.png",
+              color: CupertinoColors.activeBlue,
+            ),
+            label: "Donatı Seçimi"),
       ]),
       tabBuilder: (context, index) {
         switch (index) {
