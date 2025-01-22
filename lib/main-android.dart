@@ -189,40 +189,6 @@ class _Page2State extends State<Page2> {
   TextEditingController adetDeger = TextEditingController();
   String sonuc = "";
 
-  Map<int, double> capKesit = {
-    8: 0.5,
-    10: 0.79,
-    12: 1.13,
-    14: 1.54,
-    16: 2.01,
-    18: 2.54,
-    20: 3.14,
-    22: 3.8,
-    24: 4.52,
-    26: 5.31,
-    28: 6.16,
-    30: 7.07,
-    32: 8.04,
-    36: 10.18,
-    40: 12.57,
-    50: 19.64
-  };
-
-  void calculate(value) {
-    if (capDeger == null || adetDeger.text.isEmpty) return;
-
-    setState(() {
-      double? r;
-      try {
-        r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
-      } on FormatException {
-        adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
-        r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
-      }
-      sonuc = r.toStringAsFixed(3);
-    });
-  }
-
   List<TableRow> getTableRows() {
     if (capDeger == null || adetDeger.text.isEmpty || sonuc.isEmpty) return <TableRow>[];
 
@@ -290,8 +256,8 @@ class _Page2State extends State<Page2> {
                             });
                       } else if (adetDeger.text.contains('-') || adetDeger.text.contains(' ')) {
                         adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
-                      } else {
-                        calculate(value);
+                      } else if (capDeger != null && adetDeger.text.isNotEmpty) {
+                        setState(() => sonuc = page2_calculation(capDeger, adetDeger));
                       }
                     },
                   ),
@@ -319,10 +285,10 @@ class _Page2State extends State<Page2> {
                       DropdownMenuItem(value: 50, child: Text('50')),
                     ],
                     onChanged: (value) {
-                      setState(() {
-                        capDeger = value;
-                      });
-                      calculate(value);
+                      capDeger = value;
+                      if (capDeger != null && adetDeger.text.isNotEmpty) {
+                        setState(() => sonuc = page2_calculation(capDeger, adetDeger));
+                      }
                     },
                     hint: const Text('Çap (mm)'),
                     itemHeight: 80.0,
