@@ -166,7 +166,7 @@ class _Page1State extends State<Page1> {
               ],
             ),
             Text(
-              'Sonuç (kg): ${sonuc.replaceAll('.', ',')}',
+              'Sonuç (kg): $sonuc',
               style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor, fontSize: 18),
             ),
             Container(margin: const EdgeInsets.only(top: 50), child: const FullScreenImage(imagePath: 'assets/page1Image.png'))

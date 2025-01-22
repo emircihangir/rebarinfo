@@ -18,6 +18,6 @@ Map<int, double> capBirimagirlik = {
 };
 
 String page1_calculation(capDeger, uzunlukDeger) {
-  double r = (capBirimagirlik[capDeger] ?? 0) * double.parse(uzunlukDeger.text.replaceAll(',', '.'));
-  return r.toStringAsFixed(3);
+  double r = (capBirimagirlik[capDeger] ?? 0) * double.parse(uzunlukDeger.text);
+  return r.toStringAsFixed(3).replaceAll(".", ",");
 }
