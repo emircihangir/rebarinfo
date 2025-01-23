@@ -107,20 +107,26 @@ class Page1View extends StatelessWidget {
           child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CupertinoTextField(
-              focusNode: focusNode,
-              onTapOutside: (event) => focusNode.unfocus(),
-              controller: controller,
-              placeholder: "Toplam Uzunluk (m)",
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                //* Update the result state
-                try {
-                  final parsed = double.parse(controller.text);
-                  Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
-                } on FormatException {}
-              },
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: CupertinoTextField(
+                  focusNode: focusNode,
+                  onTapOutside: (event) => focusNode.unfocus(),
+                  controller: controller,
+                  placeholder: "Toplam Uzunluk (m)",
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    //* Update the result state
+                    try {
+                      final parsed = double.parse(controller.text);
+                      Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
+                    } on FormatException {}
+                  },
+                ),
+              ),
             ),
             CupertinoButton(
                 alignment: Alignment.centerLeft,
