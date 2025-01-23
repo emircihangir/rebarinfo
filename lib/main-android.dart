@@ -125,11 +125,12 @@ class _Page1State extends State<Page1> {
                     keyboardType: TextInputType.number,
                     controller: uzunlukDeger,
                     onChanged: (value) {
-                      if (value.contains('-') || value.contains(' ')) {
-                        uzunlukDeger.text = uzunlukDeger.text.substring(0, uzunlukDeger.text.length - 1);
-                      } else if (capDeger != null && uzunlukDeger.text.isNotEmpty) {
-                        setState(() => sonuc = page1_calculation(capDeger, uzunlukDeger));
-                      }
+                      if (capDeger == null || uzunlukDeger.text.isEmpty) return;
+
+                      try {
+                        final parsed = double.parse(uzunlukDeger.text);
+                        setState(() => sonuc = page1_calculation(capDeger!, parsed));
+                      } on FormatException {}
                     },
                   ),
                 ),
@@ -155,9 +156,12 @@ class _Page1State extends State<Page1> {
                   ],
                   onChanged: (value) {
                     capDeger = value;
-                    if (capDeger != null && uzunlukDeger.text.isNotEmpty) {
-                      setState(() => sonuc = page1_calculation(capDeger, uzunlukDeger));
-                    }
+                    if (capDeger == null || uzunlukDeger.text.isEmpty) return;
+
+                    try {
+                      final parsed = double.parse(uzunlukDeger.text);
+                      setState(() => sonuc = page1_calculation(capDeger!, parsed));
+                    } on FormatException {}
                   },
                   hint: const Text('Çap (mm)'),
                   itemHeight: 80.0,
