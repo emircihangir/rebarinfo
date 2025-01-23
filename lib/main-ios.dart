@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
+import 'package:rebarinfo/universal-functions.dart';
 
 class IOSapp extends StatelessWidget {
   const IOSapp({super.key});
