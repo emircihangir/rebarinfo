@@ -40,7 +40,7 @@ Map<int, double> capKesit = {
 
 String page1_calculation(int capDeger, double uzunlukDeger) {
   double r = (capBirimagirlik[capDeger] ?? 0) * uzunlukDeger;
-  return r.toStringAsFixed(3).replaceAll(".", ",");
+  return r.toStringAsFixed(2).replaceAll(".", ",");
 }
 
 String page2_calculation(capDeger, adetDeger) {
@@ -51,7 +51,7 @@ String page2_calculation(capDeger, adetDeger) {
     adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
     r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
   }
-  return r.toStringAsFixed(3);
+  return r.toStringAsFixed(2);
 }
 
 List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
@@ -74,7 +74,7 @@ List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
     tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
       Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
       Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
+      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(2).replaceAll('.', ','))),
     ]));
     counter++;
   }
@@ -104,7 +104,7 @@ List<TableRow> page2_get_table_rows(capDeger, adetDeger, sonuc) {
     tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
       Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
       Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(3).replaceAll('.', ','))),
+      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(2).replaceAll('.', ','))),
     ]));
     counter++;
   }
