@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:provider/provider.dart';
 import 'package:rebarinfo/universal-functions.dart';
 
@@ -173,7 +174,18 @@ class Page1View extends StatelessWidget {
                 }),
             Consumer<ResultModel>(
               builder: (context, value, child) => value._result == "" ? const Text("") : Text("Sonuç: ${value._result}kg"),
-            )
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: PhotoView(
+                backgroundDecoration: const BoxDecoration(color: CupertinoColors.systemBackground),
+                imageProvider: const AssetImage("./assets/page1Image.png"),
+                minScale: PhotoViewComputedScale.contained,
+                maxScale: PhotoViewComputedScale.covered,
+              ),
+            ),
           ],
         ),
       )),
