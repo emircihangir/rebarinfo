@@ -74,7 +74,105 @@ class Page1View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CupertinoPageScaffold(child: SafeArea(child: Text("page 1")));
+    TextEditingController controller = TextEditingController();
+    FocusNode focusNode = FocusNode();
+
+    const pickerValues = [
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      28,
+      30,
+      32,
+      36,
+      40,
+      50
+    ];
+
+    return CupertinoPageScaffold(
+        child: MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SelectedPickerValueModel()),
+        ChangeNotifierProvider(create: (context) => ResultModel()),
+      ],
+      builder: (context, child) => SafeArea(
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            CupertinoTextField(
+              maxLength: 3,
+              focusNode: focusNode,
+              onTapOutside: (event) => focusNode.unfocus(),
+              controller: controller,
+              placeholder: "Toplam Uzunluk (m)",
+              keyboardType: TextInputType.number,
+              onChanged: (value) {
+                //* Update the result state
+                try {
+                  final parsed = double.parse(controller.text);
+                  Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
+                } on FormatException {}
+              },
+            ),
+            CupertinoButton(
+                alignment: Alignment.centerLeft,
+                child: Consumer<SelectedPickerValueModel>(
+                  builder: (context, value, child) => Text(
+                    value.selectedPickerValue == 0 ? "Çap seç" : "Çap: ${"${value.selectedPickerValue}mm"}",
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                onPressed: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (c) {
+                      return Container(
+                        height: 216,
+                        padding: const EdgeInsets.only(top: 6.0),
+                        // The Bottom margin is provided to align the popup above the system navigation bar.
+                        margin: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                        ),
+                        // Provide a background color for the popup.
+                        color: CupertinoColors.systemBackground.resolveFrom(context),
+                        // Use a SafeArea widget to avoid system overlaps.
+                        child: SafeArea(
+                          top: false,
+                          child: CupertinoPicker(
+                              magnification: 1.22,
+                              squeeze: 1.2,
+                              useMagnifier: true,
+                              itemExtent: 32,
+                              onSelectedItemChanged: (selectedIndex) {
+                                Provider.of<SelectedPickerValueModel>(context, listen: false).selectedPickerValue = pickerValues[selectedIndex];
+
+                                try {
+                                  final parsed = double.parse(controller.text);
+                                  Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
+                                } on FormatException {}
+                              },
+                              children: pickerValues.map((e) => Text("${e}mm")).toList()),
+                        ),
+                      );
+                    },
+                  );
+                }),
+            Consumer<ResultModel>(
+              builder: (context, value, child) => value._result == "" ? const Text("") : Text("Sonuç: ${value._result}kg"),
+            )
+          ],
+        ),
+      )),
+    ));
   }
 }
 
