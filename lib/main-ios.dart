@@ -113,6 +113,7 @@ class Page1View extends StatelessWidget {
               child: SizedBox(
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: CupertinoTextField(
+                  textAlign: TextAlign.center,
                   focusNode: focusNode,
                   onTapOutside: (event) => focusNode.unfocus(),
                   controller: controller,
