@@ -89,7 +89,6 @@ class Page1View extends StatelessWidget {
       24,
       26,
       28,
-      28,
       30,
       32,
       36,

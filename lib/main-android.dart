@@ -147,7 +147,6 @@ class _Page1State extends State<Page1> {
                     DropdownMenuItem(value: 24, child: Text('24')),
                     DropdownMenuItem(value: 26, child: Text('26')),
                     DropdownMenuItem(value: 28, child: Text('28')),
-                    DropdownMenuItem(value: 28, child: Text('28')),
                     DropdownMenuItem(value: 30, child: Text('30')),
                     DropdownMenuItem(value: 32, child: Text('32')),
                     DropdownMenuItem(value: 36, child: Text('36')),
