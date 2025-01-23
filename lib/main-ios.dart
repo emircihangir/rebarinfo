@@ -109,7 +109,6 @@ class Page1View extends StatelessWidget {
         child: Column(
           children: [
             CupertinoTextField(
-              maxLength: 3,
               focusNode: focusNode,
               onTapOutside: (event) => focusNode.unfocus(),
               controller: controller,
