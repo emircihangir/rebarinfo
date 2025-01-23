@@ -49,6 +49,26 @@ class IOSapp extends StatelessWidget {
   }
 }
 
+class SelectedPickerValueModel extends ChangeNotifier {
+  int _selectedPickerValue = 0;
+
+  int get selectedPickerValue => _selectedPickerValue;
+
+  set selectedPickerValue(int value) {
+    _selectedPickerValue = value;
+    notifyListeners();
+  }
+}
+
+class ResultModel extends ChangeNotifier {
+  String _result = "";
+
+  set result(String value) {
+    _result = value;
+    notifyListeners();
+  }
+}
+
 class Page1View extends StatelessWidget {
   const Page1View({super.key});
 
