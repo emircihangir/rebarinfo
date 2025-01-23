@@ -38,8 +38,8 @@ Map<int, double> capKesit = {
   50: 19.64
 };
 
-String page1_calculation(capDeger, uzunlukDeger) {
-  double r = (capBirimagirlik[capDeger] ?? 0) * double.parse(uzunlukDeger.text);
+String page1_calculation(int capDeger, double uzunlukDeger) {
+  double r = (capBirimagirlik[capDeger] ?? 0) * uzunlukDeger;
   return r.toStringAsFixed(3).replaceAll(".", ",");
 }
 
