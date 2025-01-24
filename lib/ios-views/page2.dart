@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:rebarinfo/universal-functions.dart';
-import 'package:photo_view/photo_view.dart';
 
 class SPVpage2Model extends ChangeNotifier {
   int _selectedValue = 0;
