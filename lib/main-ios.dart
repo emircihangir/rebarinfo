@@ -124,7 +124,9 @@ class Page1View extends StatelessWidget {
                     try {
                       final parsed = double.parse(controller.text);
                       Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
-                    } on FormatException {}
+                    } on FormatException {
+                      return;
+                    }
                   },
                 ),
               ),
@@ -164,7 +166,9 @@ class Page1View extends StatelessWidget {
                                 try {
                                   final parsed = double.parse(controller.text);
                                   Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed);
-                                } on FormatException {}
+                                } on FormatException {
+                                  return;
+                                }
                               },
                               children: pickerValues.map((e) => Text("${e}mm")).toList()),
                         ),

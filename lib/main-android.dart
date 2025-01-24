@@ -130,7 +130,9 @@ class _Page1State extends State<Page1> {
                       try {
                         final parsed = double.parse(uzunlukDeger.text);
                         setState(() => sonuc = page1_calculation(capDeger!, parsed));
-                      } on FormatException {}
+                      } on FormatException {
+                        return;
+                      }
                     },
                   ),
                 ),
@@ -160,7 +162,9 @@ class _Page1State extends State<Page1> {
                     try {
                       final parsed = double.parse(uzunlukDeger.text);
                       setState(() => sonuc = page1_calculation(capDeger!, parsed));
-                    } on FormatException {}
+                    } on FormatException {
+                      return;
+                    }
                   },
                   hint: const Text('Çap (mm)'),
                   itemHeight: 80.0,
