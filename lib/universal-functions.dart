@@ -38,6 +38,25 @@ Map<int, double> capKesit = {
   50: 19.64
 };
 
+const capPickerValues = [
+  8,
+  10,
+  12,
+  14,
+  16,
+  18,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32,
+  36,
+  40,
+  50
+];
+
 String page1_calculation(int capDeger, double uzunlukDeger) {
   double r = (capBirimagirlik[capDeger] ?? 0) * uzunlukDeger;
   return r.toStringAsFixed(2).replaceAll(".", ",");

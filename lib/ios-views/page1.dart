@@ -31,25 +31,6 @@ class Page1View extends StatelessWidget {
     TextEditingController controller = TextEditingController();
     FocusNode focusNode = FocusNode();
 
-    const pickerValues = [
-      8,
-      10,
-      12,
-      14,
-      16,
-      18,
-      20,
-      22,
-      24,
-      26,
-      28,
-      30,
-      32,
-      36,
-      40,
-      50
-    ];
-
     return CupertinoPageScaffold(
         child: MultiProvider(
       providers: [
@@ -114,7 +95,7 @@ class Page1View extends StatelessWidget {
                               useMagnifier: true,
                               itemExtent: 32,
                               onSelectedItemChanged: (selectedIndex) {
-                                Provider.of<SelectedPickerValueModel>(context, listen: false).selectedPickerValue = pickerValues[selectedIndex];
+                                Provider.of<SelectedPickerValueModel>(context, listen: false).selectedPickerValue = capPickerValues[selectedIndex];
 
                                 try {
                                   final parsed = double.parse(controller.text);
@@ -123,7 +104,7 @@ class Page1View extends StatelessWidget {
                                   return;
                                 }
                               },
-                              children: pickerValues.map((e) => Text("${e}mm")).toList()),
+                              children: capPickerValues.map((e) => Text("${e}mm")).toList()),
                         ),
                       );
                     },
