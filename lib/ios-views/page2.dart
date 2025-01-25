@@ -80,7 +80,7 @@ class Page2View extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 child: Consumer<SelectedValueModel>(
                   builder: (context, value, child) => Text(
-                    value.selectedValue == 0 ? "Çap seç" : "Çap: ${"${value.selectedValue}mm"}",
+                    value.selectedValue == 0 ? "Çap seç" : "Çap: ${"${value.selectedValue} mm"}",
                     textAlign: TextAlign.left,
                   ),
                 ),
@@ -117,14 +117,14 @@ class Page2View extends StatelessWidget {
                                   return;
                                 }
                               },
-                              children: capPickerValues.map((e) => Text("${e}mm")).toList()),
+                              children: capPickerValues.map((e) => Text("${e} mm")).toList()),
                         ),
                       );
                     },
                   );
                 }),
             Consumer<ResultModel>(
-              builder: (context, value, child) => value._result == "" ? const Text("") : Text("Kesit alanı: ${value._result}cm²"),
+              builder: (context, value, child) => value._result == "" ? const Text("") : Text("Kesit alanı: ${value._result} cm²"),
             ),
             SizedBox(
               height: 20,
