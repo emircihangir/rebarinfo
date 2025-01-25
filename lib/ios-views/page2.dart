@@ -21,6 +21,15 @@ class ResultModel extends ChangeNotifier {
   }
 }
 
+class TableValuesModel extends ChangeNotifier {
+  List<List> _tableValues = [];
+  List<List> get tableValues => _tableValues;
+  set tableValues(List<List> value) {
+    _tableValues = value;
+    notifyListeners();
+  }
+}
+
 class Page2View extends StatelessWidget {
   const Page2View({super.key});
 
@@ -33,7 +42,10 @@ class Page2View extends StatelessWidget {
         child: MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SelectedValueModel()),
-        ChangeNotifierProvider(create: (context) => ResultModel())
+        ChangeNotifierProvider(create: (context) => ResultModel()),
+        ChangeNotifierProvider(
+          create: (context) => TableValuesModel(),
+        )
       ],
       builder: (context, child) => SafeArea(
           child: Padding(
