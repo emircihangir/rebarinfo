@@ -53,8 +53,8 @@ class Page2View extends StatelessWidget {
                   onChanged: (value) {
                     //* Update the result state
                     try {
-                      final parsed = double.parse(adetController.text);
-                      Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed);
+                      final parsed = int.parse(adetController.text);
+                      Provider.of<ResultModel>(context, listen: false).result = page2_calculation(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed);
                     } on FormatException {
                       return;
                     }
@@ -95,8 +95,8 @@ class Page2View extends StatelessWidget {
                                 Provider.of<SelectedValueModel>(context, listen: false).selectedValue = capPickerValues[selectedIndex];
 
                                 try {
-                                  final parsed = double.parse(adetController.text);
-                                  Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedValueModel>(context, listen: false)._selectedValue, parsed);
+                                  final parsed = int.parse(adetController.text);
+                                  Provider.of<ResultModel>(context, listen: false).result = page2_calculation(capPickerValues[selectedIndex], parsed);
                                 } on FormatException {
                                   return;
                                 }

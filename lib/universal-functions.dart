@@ -62,7 +62,7 @@ String page1_calculation(int capDeger, double uzunlukDeger) {
   return r.toStringAsFixed(2).replaceAll(".", ",");
 }
 
-String page2_calculation(int capDeger, int adetDeger) {
+String page2_calculation(int? capDeger, int adetDeger) {
   double r = (capKesit[capDeger] ?? 0) * adetDeger;
   return r.toStringAsFixed(2).replaceAll(".", ",");
 }

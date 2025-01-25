@@ -214,8 +214,11 @@ class _Page2State extends State<Page2> {
                     keyboardType: TextInputType.number,
                     controller: adetDeger,
                     onChanged: (value) {
-                      if (capDeger != null && adetDeger.text.isNotEmpty) {
-                        setState(() => sonuc = page2_calculation(capDeger, adetDeger));
+                      try {
+                        final parsed = int.parse(adetDeger.text);
+                        setState(() => sonuc = page2_calculation(capDeger, parsed));
+                      } on FormatException {
+                        return;
                       }
                     },
                   ),
@@ -244,8 +247,11 @@ class _Page2State extends State<Page2> {
                     ],
                     onChanged: (value) {
                       capDeger = value;
-                      if (capDeger != null && adetDeger.text.isNotEmpty) {
-                        setState(() => sonuc = page2_calculation(capDeger, adetDeger));
+                      try {
+                        final parsed = int.parse(adetDeger.text);
+                        setState(() => sonuc = page2_calculation(capDeger, parsed));
+                      } on FormatException {
+                        return;
                       }
                     },
                     hint: const Text('Çap (mm)'),
