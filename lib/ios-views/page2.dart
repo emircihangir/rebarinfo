@@ -107,6 +107,9 @@ class Page2View extends StatelessWidget {
                     },
                   );
                 }),
+            Consumer<ResultModel>(
+              builder: (context, value, child) => value._result == "" ? const Text("") : Text("Kesit alanı: ${value._result}cm²"),
+            ),
           ],
         ),
       )),
