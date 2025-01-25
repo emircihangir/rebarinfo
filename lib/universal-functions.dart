@@ -89,25 +89,21 @@ List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
   return tr;
 }
 
-List<List> page2_calculate_table_values(capDeger, adetDeger, sonuc) {
+List<List> page2_calculate_table_values(int capDeger, int adetDeger, double sonuc) {
   // if (capDeger == null || adetDeger == null || sonuc.isEmpty) return [];
 
   List<List> result = [];
   for (var cap in capKesit.keys) {
     if (cap == capDeger) continue;
 
-    double adet = double.parse(sonuc) / capKesit[cap]!;
-
-    int newAdet = adet.ceil();
+    int adet = (sonuc / capKesit[cap]!).ceil();
 
     result.add([
-      newAdet,
+      adet,
       cap,
-      (capKesit[cap]! * newAdet)
+      (capKesit[cap]! * adet)
     ]);
   }
-
-  print(result);
 
   return result;
 }
