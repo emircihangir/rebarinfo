@@ -62,15 +62,9 @@ String page1_calculation(int capDeger, double uzunlukDeger) {
   return r.toStringAsFixed(2).replaceAll(".", ",");
 }
 
-String page2_calculation(capDeger, adetDeger) {
-  double? r;
-  try {
-    r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
-  } on FormatException {
-    adetDeger.text = adetDeger.text.substring(0, adetDeger.text.length - 1);
-    r = (capKesit[capDeger] ?? 0) * int.parse(adetDeger.text);
-  }
-  return r.toStringAsFixed(2);
+String page2_calculation(int capDeger, int adetDeger) {
+  double r = (capKesit[capDeger] ?? 0) * adetDeger;
+  return r.toStringAsFixed(2).replaceAll(".", ",");
 }
 
 List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
