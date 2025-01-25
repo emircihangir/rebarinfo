@@ -129,7 +129,7 @@ class _Page1State extends State<Page1> {
 
                       try {
                         final parsed = double.parse(uzunlukDeger.text);
-                        setState(() => sonuc = page1_calculation(capDeger!, parsed));
+                        setState(() => sonuc = page1_calculation(capDeger!, parsed).toStringAsFixed(2).replaceAll(".", ","));
                       } on FormatException {
                         return;
                       }
@@ -161,7 +161,7 @@ class _Page1State extends State<Page1> {
 
                     try {
                       final parsed = double.parse(uzunlukDeger.text);
-                      setState(() => sonuc = page1_calculation(capDeger!, parsed));
+                      setState(() => sonuc = page1_calculation(capDeger!, parsed).toStringAsFixed(2).replaceAll(".", ","));
                     } on FormatException {
                       return;
                     }
@@ -216,7 +216,7 @@ class _Page2State extends State<Page2> {
                     onChanged: (value) {
                       try {
                         final parsed = int.parse(adetDeger.text);
-                        setState(() => sonuc = page2_calculation(capDeger, parsed));
+                        setState(() => sonuc = page2_calculation(capDeger, parsed).toStringAsFixed(2).replaceAll(".", ","));
                       } on FormatException {
                         return;
                       }
@@ -249,7 +249,7 @@ class _Page2State extends State<Page2> {
                       capDeger = value;
                       try {
                         final parsed = int.parse(adetDeger.text);
-                        setState(() => sonuc = page2_calculation(capDeger, parsed));
+                        setState(() => sonuc = page2_calculation(capDeger, parsed).toStringAsFixed(2).replaceAll(".", ","));
                       } on FormatException {
                         return;
                       }
