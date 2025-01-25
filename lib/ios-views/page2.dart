@@ -13,10 +13,10 @@ class SelectedValueModel extends ChangeNotifier {
 }
 
 class ResultModel extends ChangeNotifier {
-  String _Result = "";
-  String get Result => _Result;
-  set Result(String value) {
-    _Result = value;
+  String _result = "";
+  String get result => _result;
+  set result(String value) {
+    _result = value;
     notifyListeners();
   }
 }
@@ -50,6 +50,15 @@ class Page2View extends StatelessWidget {
                   textAlign: TextAlign.center,
                   focusNode: textFieldFocusNode,
                   onTapOutside: (event) => textFieldFocusNode.unfocus(),
+                  onChanged: (value) {
+                    //* Update the result state
+                    try {
+                      final parsed = double.parse(adetController.text);
+                      Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed);
+                    } on FormatException {
+                      return;
+                    }
+                  },
                 ),
               ),
             ),
@@ -87,7 +96,7 @@ class Page2View extends StatelessWidget {
 
                                 try {
                                   final parsed = double.parse(adetController.text);
-                                  Provider.of<ResultModel>(context, listen: false).Result = page1_calculation(Provider.of<SelectedValueModel>(context, listen: false)._selectedValue, parsed);
+                                  Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedValueModel>(context, listen: false)._selectedValue, parsed);
                                 } on FormatException {
                                   return;
                                 }
