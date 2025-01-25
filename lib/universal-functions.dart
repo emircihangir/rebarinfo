@@ -57,15 +57,9 @@ const capPickerValues = [
   50
 ];
 
-String page1_calculation(int capDeger, double uzunlukDeger) {
-  double r = (capBirimagirlik[capDeger] ?? 0) * uzunlukDeger;
-  return r.toStringAsFixed(2).replaceAll(".", ",");
-}
+double page1_calculation(int capDeger, double uzunlukDeger) => (capBirimagirlik[capDeger] ?? 0) * uzunlukDeger;
 
-String page2_calculation(int? capDeger, int adetDeger) {
-  double r = (capKesit[capDeger] ?? 0) * adetDeger;
-  return r.toStringAsFixed(2).replaceAll(".", ",");
-}
+double page2_calculation(int? capDeger, int adetDeger) => (capKesit[capDeger] ?? 0) * adetDeger;
 
 List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
   if (kesitAlaniDeger.text.isEmpty) return [];
