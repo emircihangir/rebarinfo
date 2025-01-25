@@ -66,7 +66,9 @@ class Page2View extends StatelessWidget {
                     //* Update the result state
                     try {
                       final parsed = int.parse(adetController.text);
-                      Provider.of<ResultModel>(context, listen: false).result = page2_calculation(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed);
+                      double sonuc = page2_calculation(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed);
+                      Provider.of<ResultModel>(context, listen: false).result = sonuc.toStringAsFixed(2).replaceAll(".", ",");
+                      Provider.of<TableValuesModel>(context, listen: false).tableValues = page2_calculate_table_values(Provider.of<SelectedValueModel>(context, listen: false).selectedValue, parsed, sonuc);
                     } on FormatException {
                       return;
                     }
@@ -108,7 +110,9 @@ class Page2View extends StatelessWidget {
 
                                 try {
                                   final parsed = int.parse(adetController.text);
-                                  Provider.of<ResultModel>(context, listen: false).result = page2_calculation(capPickerValues[selectedIndex], parsed);
+                                  final sonuc = page2_calculation(capPickerValues[selectedIndex], parsed);
+                                  Provider.of<ResultModel>(context, listen: false).result = sonuc.toStringAsFixed(2).replaceAll(".", ",");
+                                  Provider.of<TableValuesModel>(context, listen: false).tableValues = page2_calculate_table_values(capPickerValues[selectedIndex], parsed, sonuc);
                                 } on FormatException {
                                   return;
                                 }
