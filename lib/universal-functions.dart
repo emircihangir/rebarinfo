@@ -89,18 +89,10 @@ List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
   return tr;
 }
 
-List<TableRow> page2_get_table_rows(capDeger, adetDeger, sonuc) {
-  if (capDeger == null || adetDeger.text.isEmpty || sonuc.isEmpty) return <TableRow>[];
+List<List> page2_calculate_table_values(capDeger, adetDeger, sonuc) {
+  // if (capDeger == null || adetDeger == null || sonuc.isEmpty) return [];
 
-  List<TableRow> tr = [
-    const TableRow(children: [
-      Center(child: Text("Adet")),
-      Center(child: Text("Çap (mm)")),
-      Center(child: Text("Kesit Alanı (cm²)")),
-    ])
-  ];
-
-  int counter = 0;
+  List<List> result = [];
   for (var cap in capKesit.keys) {
     if (cap == capDeger) continue;
 
@@ -108,13 +100,14 @@ List<TableRow> page2_get_table_rows(capDeger, adetDeger, sonuc) {
 
     int newAdet = adet.ceil();
 
-    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
-      Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
-      Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(2).replaceAll('.', ','))),
-    ]));
-    counter++;
+    result.add([
+      newAdet,
+      cap,
+      (capKesit[cap]! * newAdet)
+    ]);
   }
 
-  return tr;
+  print(result);
+
+  return result;
 }
