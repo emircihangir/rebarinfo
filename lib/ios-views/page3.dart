@@ -16,7 +16,6 @@ class Page3View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textFieldController = TextEditingController();
     final focusNode = FocusNode();
 
     return CupertinoPageScaffold(
@@ -30,11 +29,10 @@ class Page3View extends StatelessWidget {
               placeholder: "Kesit Alanı (cm²)",
               focusNode: focusNode,
               onTapOutside: (event) => focusNode.unfocus(),
-              controller: textFieldController,
               onChanged: (value) {},
             ),
           ),
-        )
+        ),
       ],
     )));
   }
