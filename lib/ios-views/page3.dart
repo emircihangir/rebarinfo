@@ -46,6 +46,75 @@ class Page3View extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Expanded(
+              child: Consumer<TableValuesModel>(
+                builder: (context, value, child) {
+                  if (value.tableValues.isNotEmpty) {
+                    return ListView.builder(
+                      itemCount: value.tableValues.length + 1,
+                      itemBuilder: (context, index) {
+                        if (index == 0) {
+                          return const ColoredBox(
+                            color: CupertinoColors.systemGrey5,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "Adet",
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Expanded(
+                                    child: Text(
+                                  "Çap (mm)",
+                                  textAlign: TextAlign.center,
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  "Kesit Alanı (cm²)",
+                                  textAlign: TextAlign.right,
+                                ))
+                              ],
+                            ),
+                          );
+                        } else {
+                          return ColoredBox(
+                            color: (index % 2 == 0) ? CupertinoColors.systemGrey5 : CupertinoColors.systemBackground,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    value.tableValues[index - 1][0].toString().replaceAll(".", ","),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                Expanded(
+                                    child: Text(
+                                  value.tableValues[index - 1][1].toString().replaceAll(".", ","),
+                                  textAlign: TextAlign.center,
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  value.tableValues[index - 1][2].toStringAsFixed(2).replaceAll(".", ","),
+                                  textAlign: TextAlign.right,
+                                ))
+                              ],
+                            ),
+                          );
+                        }
+                      },
+                    );
+                  } else {
+                    return Container();
+                  }
+                },
+              ),
+            )
           ],
         ),
       ),
