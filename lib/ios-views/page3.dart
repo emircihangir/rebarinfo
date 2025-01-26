@@ -16,24 +16,34 @@ class Page3View extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final focusNode = FocusNode();
+    final textFieldFocusNode = FocusNode();
+    final textFieldController = TextEditingController();
 
     return CupertinoPageScaffold(
         child: SafeArea(
-            child: Column(
-      children: [
-        Center(
-          child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.5,
-            child: CupertinoTextField(
-              placeholder: "Kesit Alanı (cm²)",
-              focusNode: focusNode,
-              onTapOutside: (event) => focusNode.unfocus(),
-              onChanged: (value) {},
+            child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ChangeNotifierProvider(
+        create: (context) => TableValuesModel(),
+        builder: (context, child) => Column(
+          children: [
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: CupertinoTextField(
+                  placeholder: "Kesit Alanı (cm²)",
+                  controller: textFieldController,
+                  textAlign: TextAlign.center,
+                  focusNode: textFieldFocusNode,
+                  onTapOutside: (event) => textFieldFocusNode.unfocus(),
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {},
+                ),
+              ),
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     )));
   }
 }
