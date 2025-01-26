@@ -117,7 +117,7 @@ class Page2View extends StatelessWidget {
                                   return;
                                 }
                               },
-                              children: capPickerValues.map((e) => Text("${e} mm")).toList()),
+                              children: capPickerValues.map((e) => Text("$e mm")).toList()),
                         ),
                       );
                     },
@@ -126,7 +126,7 @@ class Page2View extends StatelessWidget {
             Consumer<ResultModel>(
               builder: (context, value, child) => value._result == "" ? const Text("") : Text("Kesit alanı: ${value._result} cm²"),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
