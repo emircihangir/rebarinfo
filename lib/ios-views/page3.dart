@@ -17,7 +17,6 @@ class Page3View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textFieldFocusNode = FocusNode();
-    final textFieldController = TextEditingController();
 
     return CupertinoPageScaffold(
         child: SafeArea(
@@ -32,12 +31,18 @@ class Page3View extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.5,
                 child: CupertinoTextField(
                   placeholder: "Kesit Alanı (cm²)",
-                  controller: textFieldController,
                   textAlign: TextAlign.center,
                   focusNode: textFieldFocusNode,
                   onTapOutside: (event) => textFieldFocusNode.unfocus(),
                   keyboardType: TextInputType.number,
-                  onChanged: (value) {},
+                  onChanged: (value) {
+                    try {
+                      final value_parsed = double.parse(value);
+                      Provider.of<TableValuesModel>(context, listen: false).tableValues = page3_calculate_table_values(value_parsed);
+                    } on FormatException {
+                      return;
+                    }
+                  },
                 ),
               ),
             ),
