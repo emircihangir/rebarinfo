@@ -2,6 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:rebarinfo/universal-functions.dart';
 
+class TableValuesModel extends ChangeNotifier {
+  List<List> _tableValues = [];
+  List<List> get tableValues => _tableValues;
+  set tableValues(List<List> value) {
+    _tableValues = value;
+    notifyListeners();
+  }
+}
+
 class Page3View extends StatelessWidget {
   const Page3View({super.key});
 
