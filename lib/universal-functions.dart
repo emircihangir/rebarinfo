@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 Map<int, double> capBirimagirlik = {
   8: 0.395,
   10: 0.617,
