@@ -59,32 +59,17 @@ double page1_calculation(int capDeger, double uzunlukDeger) => (capBirimagirlik[
 
 double page2_calculation(int? capDeger, int adetDeger) => (capKesit[capDeger] ?? 0) * adetDeger;
 
-List<TableRow> page3_get_table_rows(kesitAlaniDeger) {
-  if (kesitAlaniDeger.text.isEmpty) return [];
-
-  List<TableRow> tr = [
-    const TableRow(children: [
-      Center(child: Text("Adet")),
-      Center(child: Text("Çap (mm)")),
-      Center(child: Text("Kesit Alanı (cm²)")),
-    ])
-  ];
-
-  int counter = 0;
+List<List> page3_calculate_table_values(double kesitAlaniDeger) {
+  List<List> result = [];
   for (var cap in capKesit.keys) {
-    double adet = double.parse(kesitAlaniDeger.text.replaceAll(',', '.')) / capKesit[cap]!;
-
-    int newAdet = adet.ceil();
-
-    tr.add(TableRow(decoration: BoxDecoration(color: (counter % 2 == 0) ? ThemeData().primaryColor.withAlpha(25) : null), children: [
-      Container(alignment: Alignment.centerRight, child: Text(newAdet.toString())),
-      Container(alignment: Alignment.centerRight, child: Text(cap.toString())),
-      Container(alignment: Alignment.centerRight, child: Text((capKesit[cap]! * newAdet).toStringAsFixed(2).replaceAll('.', ','))),
-    ]));
-    counter++;
+    int adet = (kesitAlaniDeger / capKesit[cap]!).ceil();
+    result.add([
+      adet,
+      cap,
+      (capKesit[cap]! * adet)
+    ]);
   }
-
-  return tr;
+  return result;
 }
 
 List<List> page2_calculate_table_values(int capDeger, int adetDeger, double sonuc) {
