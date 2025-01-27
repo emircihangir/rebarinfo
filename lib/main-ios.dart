@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'ios-views/page1.dart';
-import 'ios-views/page2.dart';
-import 'ios-views/page3.dart';
+import 'ios-views/ios-page1.dart';
+import 'ios-views/ios-page2.dart';
+import 'ios-views/ios-page3.dart';
 
 class IOSapp extends StatelessWidget {
   const IOSapp({super.key});
