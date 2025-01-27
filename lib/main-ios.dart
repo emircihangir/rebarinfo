@@ -9,43 +9,44 @@ class IOSapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoApp(
+        debugShowCheckedModeBanner: false,
         home: CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(items: [
-        BottomNavigationBarItem(
-            icon: Image.asset(
-              "./assets/weight.png",
-              color: CupertinoColors.systemGrey,
-            ),
-            activeIcon: Image.asset(
-              "./assets/weight.png",
-              color: CupertinoColors.activeBlue,
-            ),
-            label: "Ağırlık"),
-        const BottomNavigationBarItem(icon: Icon(CupertinoIcons.arrow_2_circlepath), label: "Çap Dönüştürme"),
-        BottomNavigationBarItem(
-            icon: Image.asset(
-              "./assets/steel.png",
-              color: CupertinoColors.systemGrey,
-            ),
-            activeIcon: Image.asset(
-              "./assets/steel.png",
-              color: CupertinoColors.activeBlue,
-            ),
-            label: "Donatı Seçimi"),
-      ]),
-      tabBuilder: (context, index) {
-        switch (index) {
-          case 0:
-            return const Page1View();
-          case 1:
-            return const Page2View();
-          case 2:
-            return const Page3View();
+          tabBar: CupertinoTabBar(items: [
+            BottomNavigationBarItem(
+                icon: Image.asset(
+                  "./assets/weight.png",
+                  color: CupertinoColors.systemGrey,
+                ),
+                activeIcon: Image.asset(
+                  "./assets/weight.png",
+                  color: CupertinoColors.activeBlue,
+                ),
+                label: "Ağırlık"),
+            const BottomNavigationBarItem(icon: Icon(CupertinoIcons.arrow_2_circlepath), label: "Çap Dönüştürme"),
+            BottomNavigationBarItem(
+                icon: Image.asset(
+                  "./assets/steel.png",
+                  color: CupertinoColors.systemGrey,
+                ),
+                activeIcon: Image.asset(
+                  "./assets/steel.png",
+                  color: CupertinoColors.activeBlue,
+                ),
+                label: "Donatı Seçimi"),
+          ]),
+          tabBuilder: (context, index) {
+            switch (index) {
+              case 0:
+                return const Page1View();
+              case 1:
+                return const Page2View();
+              case 2:
+                return const Page3View();
 
-          default:
-            return const Page1View();
-        }
-      },
-    ));
+              default:
+                return const Page1View();
+            }
+          },
+        ));
   }
 }
