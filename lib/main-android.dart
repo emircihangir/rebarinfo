@@ -268,8 +268,8 @@ class _Page2State extends State<Page2> {
             Container(
               margin: const EdgeInsets.only(top: 50, left: 8, right: 8),
               child: Table(
-                children: page2_get_table_rows(capDeger, adetDeger, sonuc),
-              ),
+                  // children: page2_get_table_rows(capDeger, adetDeger, sonuc),
+                  ),
             )
           ],
         ),
@@ -315,8 +315,8 @@ class _Page3State extends State<Page3> {
             Container(
               margin: const EdgeInsets.only(top: 50, left: 8, right: 8),
               child: Table(
-                children: page3_get_table_rows(kesitAlaniDeger),
-              ),
+                  // children: page3_get_table_rows(kesitAlaniDeger),
+                  ),
             )
           ],
         ),
