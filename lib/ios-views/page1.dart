@@ -52,11 +52,14 @@ class Page1View extends StatelessWidget {
                   onTapOutside: (event) => focusNode.unfocus(),
                   controller: controller,
                   placeholder: "Toplam Uzunluk (m)",
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) {
+                    String _value = value;
+                    if (_value.contains(",")) _value = _value.replaceAll(",", ".");
+
                     //* Update the result state
                     try {
-                      final parsed = double.parse(controller.text);
+                      final parsed = double.parse(_value);
                       Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed).toStringAsFixed(2).replaceAll(".", ",");
                     } on FormatException {
                       return;
@@ -95,10 +98,13 @@ class Page1View extends StatelessWidget {
                               useMagnifier: true,
                               itemExtent: 32,
                               onSelectedItemChanged: (selectedIndex) {
+                                String _ct = controller.text;
+                                if (_ct.contains(",")) _ct = _ct.replaceAll(",", ".");
+
                                 Provider.of<SelectedPickerValueModel>(context, listen: false).selectedPickerValue = capPickerValues[selectedIndex];
 
                                 try {
-                                  final parsed = double.parse(controller.text);
+                                  final parsed = double.parse(_ct);
                                   Provider.of<ResultModel>(context, listen: false).result = page1_calculation(Provider.of<SelectedPickerValueModel>(context, listen: false)._selectedPickerValue, parsed).toStringAsFixed(2).replaceAll(".", ",");
                                 } on FormatException {
                                   return;

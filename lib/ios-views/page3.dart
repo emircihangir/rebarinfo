@@ -34,8 +34,9 @@ class Page3View extends StatelessWidget {
                   textAlign: TextAlign.center,
                   focusNode: textFieldFocusNode,
                   onTapOutside: (event) => textFieldFocusNode.unfocus(),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) {
+                    if (value.contains(",")) value = value.replaceAll(",", ".");
                     try {
                       final value_parsed = double.parse(value);
                       Provider.of<TableValuesModel>(context, listen: false).tableValues = page3_calculate_table_values(value_parsed);
