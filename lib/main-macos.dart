@@ -11,6 +11,7 @@ class MacApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final tabController = MacosTabController(initialIndex: 0, length: 3);
     return MacosApp(
+      debugShowCheckedModeBanner: false,
       theme: MacosThemeData.light(),
       darkTheme: MacosThemeData.dark(),
       themeMode: ThemeMode.system,
