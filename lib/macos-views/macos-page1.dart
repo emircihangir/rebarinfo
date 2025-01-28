@@ -41,7 +41,7 @@ class MacPage1View extends StatelessWidget {
         children: [
           Center(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 8.0),
               child: SizedBox(
                 width: 150,
                 child: MacosTextField(
@@ -61,37 +61,37 @@ class MacPage1View extends StatelessWidget {
             ),
           ),
           Consumer<PopupModel>(
-            builder: (context, value, child) => SizedBox(
-              width: 100,
-              child: MacosPopupButton(
-                items: capPickerValues
-                    .map(
-                      (e) => MacosPopupMenuItem(
-                        value: e,
-                        child: Text(e.toString()),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  Provider.of<PopupModel>(context, listen: false).selectedValue = value;
+            builder: (context, value, child) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: 140,
+                child: MacosPopupButton(
+                  items: capPickerValues
+                      .map(
+                        (e) => MacosPopupMenuItem(
+                          value: e,
+                          child: Text(e.toString()),
+                        ),
+                      )
+                      .toList(),
+                  onChanged: (value) {
+                    Provider.of<PopupModel>(context, listen: false).selectedValue = value;
 
-                  try {
-                    final uzunlukDeger_parsed = double.parse(uzunlukController.text.replaceAll(",", "."));
-                    Provider.of<ResultModel>(context, listen: false).result = page1_calculation(value ?? 0, uzunlukDeger_parsed);
-                  } on FormatException {
-                    return;
-                  }
-                },
-                hint: const Text("Çap seç"),
-                value: Provider.of<PopupModel>(context, listen: false).selectedValue,
+                    try {
+                      final uzunlukDeger_parsed = double.parse(uzunlukController.text.replaceAll(",", "."));
+                      Provider.of<ResultModel>(context, listen: false).result = page1_calculation(value ?? 0, uzunlukDeger_parsed);
+                    } on FormatException {
+                      return;
+                    }
+                  },
+                  hint: const Text("Çap seç (mm)"),
+                  value: Provider.of<PopupModel>(context, listen: false).selectedValue,
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Consumer<ResultModel>(
-              builder: (context, value, child) => Text("Sonuç: ${value.result.toStringAsFixed(2).replaceAll(".", ",")} kg"),
-            ),
+          Consumer<ResultModel>(
+            builder: (context, value, child) => Text("Sonuç: ${value.result.toStringAsFixed(2).replaceAll(".", ",")} kg"),
           )
         ],
       ),
