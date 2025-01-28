@@ -34,7 +34,7 @@ class Page3View extends StatelessWidget {
                   textAlign: TextAlign.center,
                   focusNode: textFieldFocusNode,
                   onTapOutside: (event) => textFieldFocusNode.unfocus(),
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) {
                     if (value.contains(",")) value = value.replaceAll(",", ".");
                     try {

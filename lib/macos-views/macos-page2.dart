@@ -90,7 +90,6 @@ class MacPage2View extends StatelessWidget {
                       .toList(),
                   onChanged: (value) {
                     Provider.of<PopupModel>(context, listen: false).selectedValue = value;
-                    print(value.runtimeType);
 
                     try {
                       final adetDeger_parsed = int.parse(adetController.text);

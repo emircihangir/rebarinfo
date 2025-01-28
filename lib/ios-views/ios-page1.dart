@@ -52,8 +52,9 @@ class Page1View extends StatelessWidget {
                   onTapOutside: (event) => focusNode.unfocus(),
                   controller: controller,
                   placeholder: "Toplam Uzunluk (m)",
-                  keyboardType: TextInputType.numberWithOptions(decimal: true),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   onChanged: (value) {
+                    // ignore: no_leading_underscores_for_local_identifiers
                     String _value = value;
                     if (_value.contains(",")) _value = _value.replaceAll(",", ".");
 
@@ -98,6 +99,7 @@ class Page1View extends StatelessWidget {
                               useMagnifier: true,
                               itemExtent: 32,
                               onSelectedItemChanged: (selectedIndex) {
+                                // ignore: no_leading_underscores_for_local_identifiers
                                 String _ct = controller.text;
                                 if (_ct.contains(",")) _ct = _ct.replaceAll(",", ".");
 
