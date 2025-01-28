@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rebarinfo/universal-functions.dart';
 
@@ -138,7 +139,7 @@ class Page2View extends StatelessWidget {
                       itemBuilder: (context, index) {
                         if (index == 0) {
                           return const ColoredBox(
-                            color: CupertinoColors.systemGrey5,
+                            color: Color.fromARGB(50, 128, 128, 128),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -163,7 +164,7 @@ class Page2View extends StatelessWidget {
                           );
                         } else {
                           return ColoredBox(
-                            color: (index % 2 == 0) ? CupertinoColors.systemGrey5 : CupertinoColors.systemBackground,
+                            color: (index % 2 == 0) ? Color.fromARGB(50, 128, 128, 128) : Colors.transparent,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

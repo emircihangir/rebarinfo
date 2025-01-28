@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rebarinfo/universal-functions.dart';
 import 'package:photo_view/photo_view.dart';
@@ -126,7 +127,7 @@ class Page1View extends StatelessWidget {
             ),
             Expanded(
               child: PhotoView(
-                backgroundDecoration: const BoxDecoration(color: CupertinoColors.systemBackground),
+                backgroundDecoration: const BoxDecoration(color: Colors.transparent),
                 imageProvider: const AssetImage("./assets/page1Image.png"),
                 minScale: PhotoViewComputedScale.contained,
                 maxScale: PhotoViewComputedScale.covered,
