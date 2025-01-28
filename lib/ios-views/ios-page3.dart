@@ -85,7 +85,7 @@ class Page3View extends StatelessWidget {
                           );
                         } else {
                           return ColoredBox(
-                            color: (index % 2 == 0) ? Color.fromARGB(50, 128, 128, 128) : Colors.transparent,
+                            color: (index % 2 == 0) ? const Color.fromARGB(50, 128, 128, 128) : Colors.transparent,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
