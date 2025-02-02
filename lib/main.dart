@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:rebarinfo/main-macos.dart';
 import 'main-android.dart';
 import 'main-ios.dart';
@@ -14,9 +13,9 @@ Future<void> _configureMacosWindowUtils() async {
 
 void main() async {
   if (Platform.isAndroid) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [
-      SystemUiOverlay.top
-    ]);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge, overlays: [
+    //   SystemUiOverlay.top
+    // ]);
     runApp(const AndroidApp());
   } else if (Platform.isIOS) {
     runApp(const IOSapp());
