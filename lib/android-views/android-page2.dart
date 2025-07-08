@@ -48,7 +48,8 @@ class Page2 extends StatelessWidget {
                     return;
                   }
 
-                  Provider.of<ResultsModel>(context, listen: false).calculation_result = page2_calculation(capDeger ?? 0, _value);
+                  Provider.of<ResultsModel>(context, listen: false).calculation_result =
+                      page2_calculation(capDeger ?? 0, _value);
                 },
               ),
             ),
@@ -75,8 +76,10 @@ class Page2 extends StatelessWidget {
 
                   double calculation = page2_calculation(capDeger ?? 0, _parsed);
 
-                  Provider.of<ResultsModel>(context, listen: false).calculation_result = calculation;
-                  Provider.of<ResultsModel>(context, listen: false).tableValues = page2_calculate_table_values(capDeger ?? 0, _parsed, calculation);
+                  Provider.of<ResultsModel>(context, listen: false).calculation_result =
+                      calculation;
+                  Provider.of<ResultsModel>(context, listen: false).tableValues =
+                      page2_calculate_table_values(capDeger ?? 0, _parsed, calculation);
                 },
               ),
             ),
@@ -102,7 +105,7 @@ class Page2 extends StatelessWidget {
                       itemBuilder: (context, index) {
                         if (index == 0) {
                           return ColoredBox(
-                            color: Theme.of(context).primaryColor.withOpacity(0.1),
+                            color: Theme.of(context).primaryColor.withAlpha(25),
                             child: const Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -127,7 +130,9 @@ class Page2 extends StatelessWidget {
                           );
                         } else {
                           return ColoredBox(
-                            color: (index % 2 == 0) ? Theme.of(context).primaryColor.withOpacity(0.1) : Colors.transparent,
+                            color: (index % 2 == 0)
+                                ? Theme.of(context).primaryColor.withAlpha(25)
+                                : Colors.transparent,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -144,7 +149,9 @@ class Page2 extends StatelessWidget {
                                 )),
                                 Expanded(
                                     child: Text(
-                                  value.tableValues[index - 1][2].toStringAsFixed(2).replaceAll(".", ","),
+                                  value.tableValues[index - 1][2]
+                                      .toStringAsFixed(2)
+                                      .replaceAll(".", ","),
                                   textAlign: TextAlign.right,
                                 ))
                               ],
