@@ -1,0 +1,14 @@
+*
+!lib
+!lib/**
+!pubspec.yaml
+!pubspec.lock
+!README.md
+!.gitignore
+!assets
+!assets/**
+!android
+!android/**
+*DS_Store
+!privacy-policy.md
+android/private_key.pepk
